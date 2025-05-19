@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>INSIDE - Treino Físico</title>
+  <title>TREINO ALUNO</title>
   <link rel="manifest" href="manifest.json">
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
   <script>
     // Verifica se o Service Worker é suportado pelo navegador
     if ('serviceWorker' in navigator) {
@@ -16,111 +16,118 @@
   <style>
     /* Estilos gerais para o corpo da página */
     body {
-      font-family: Arial, sans-serif; /* Mantido Arial para o texto principal */
-      background-color: #121212; /* Fundo escuro */
-      color: #f1f1f1; /* Texto claro */
+      font-family: 'Montserrat', sans-serif; /* Usando Montserrat como fonte principal */
+      color: #e5e5ea; /* Texto claro com um leve tom cinza */
       padding: 20px;
       display: flex;
       flex-direction: column;
       align-items: center; /* Centraliza o conteúdo horizontalmente */
       margin: 0; /* Remove margem padrão do body */
+      min-height: 100vh; /* Garante que o body tenha pelo menos a altura da viewport */
+
+      /* Estilos para a imagem de fundo com overlay escuro */
+      background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO3VcnAsx7eAoxuETLzJc_w0mEj27Lf2nzDQ&s');
+      background-size: cover; /* Cobre toda a área do body */
+      background-position: center; /* Centraliza a imagem */
+      background-attachment: fixed; /* Fixa a imagem para não rolar com o conteúdo */
+      background-repeat: no-repeat; /* Não repete a imagem */
     }
 
-    /* Estilos para os títulos h1 e h2 */
-    h1, h2 {
-      color: #ffdd00; /* Cor amarela vibrante */
-      text-transform: uppercase; /* Texto em maiúsculas */
-      text-align: center; /* Centraliza o texto */
-      font-size: 28px;
-      margin-bottom: 20px; /* Espaço abaixo dos títulos */
+    /* Estilos para o título principal h1 */
+    h1 {
+      font-family: 'Oswald', sans-serif; /* Mantido Oswald para o título principal, se desejar um visual mais condensado */
+      color: #f2f2f7; /* Cor mais clara para o título */
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 32px; /* Tamanho maior para o título principal */
+      margin-bottom: 30px; /* Espaço maior abaixo do título */
+      font-weight: 700; /* Usando peso 700 da Oswald */
+      /* Adicionando uma sombra no texto para melhorar a legibilidade sobre a imagem */
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8); /* Sombra um pouco mais forte */
     }
 
-    /* Estilos para a div que contém cada treino - Aplicando Glassmorphism */
+    /* Estilos para os títulos h2 (Nome dos Treinos) */
+    h2 {
+      font-family: 'Montserrat', sans-serif; /* Usando Montserrat para os títulos dos treinos */
+      color: #f2f2f7; /* Cor clara para os títulos dos treinos */
+      text-transform: none; /* Remove uppercase */
+      text-align: left; /* Alinha à esquerda */
+      font-size: 24px; /* Tamanho ajustado */
+      margin-bottom: 15px; /* Espaço abaixo do título do treino */
+      font-weight: 700; /* Montserrat bold */
+    }
+
+    /* Estilos para a div que contém cada treino - Estilo de card sólido */
     .treino {
       width: 100%;
-      max-width: 500px; /* Largura máxima para melhor visualização em telas maiores */
-      margin-bottom: 40px;
+      max-width: 500px; /* Largura máxima */
+      margin-bottom: 20px; /* Espaço entre os cards */
       padding: 20px;
-      /* Glassmorphism styles */
-      background-color: rgba(30, 30, 30, 0.5); /* Fundo semi-transparente escuro */
-      backdrop-filter: blur(10px); /* Efeito de desfoque */
-      -webkit-backdrop-filter: blur(10px); /* Para Safari */
-      border: 1px solid rgba(255, 255, 255, 0.1); /* Borda clara sutil */
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Sombra para profundidade */
+      /* Ajustando a cor de fundo para ter mais contraste com a imagem de fundo */
+      background-color: rgba(44, 44, 46, 0.95); /* Fundo do card mais opaco */
       border-radius: 12px; /* Cantos arredondados */
-      position: relative; /* Necessário para posicionar o pseudo-elemento */
-      overflow: hidden; /* Garante que o pseudo-elemento não vaze */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra um pouco mais forte */
+      position: relative; /* Mantido caso precise para futuros elementos */
+      overflow: hidden;
     }
 
-    /* Pseudo-elemento para o texto de fundo "INSIDE" */
+    /* Remove o pseudo-elemento de texto de fundo */
     .treino::before {
-      content: "INSIDE";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%); /* Centraliza o texto */
-      font-family: 'Oswald', sans-serif; /* Usa a fonte condensada */
-      font-size: 150px; /* Tamanho grande para o texto de fundo */
-      font-weight: bold; /* Texto em negrito */
-      color: rgba(255, 255, 255, 0.05); /* Cor branca muito sutil com transparência */
-      z-index: -1; /* Coloca o texto atrás do conteúdo */
-      pointer-events: none; /* Permite cliques nos elementos acima */
-      white-space: nowrap; /* Impede quebra de linha do texto */
-      user-select: none; /* Impede seleção do texto */
+      content: none;
     }
 
     /* Estilos para os rótulos (cada exercício) */
     label {
-      display: block; /* Cada label em uma nova linha */
-      margin: 16px 0;
-      cursor: pointer; /* Muda o cursor ao passar por cima */
-      font-size: 24px;
-      line-height: 1.4; /* Espaçamento entre linhas */
-      position: relative; /* Garante que os labels fiquem acima do pseudo-elemento */
-      z-index: 1; /* Garante que os labels fiquem acima do pseudo-elemento */
+      display: flex; /* Usa flexbox para alinhar checkbox e texto */
+      align-items: center; /* Centraliza verticalmente */
+      margin: 12px 0; /* Espaçamento entre exercícios */
+      cursor: pointer;
+      font-size: 18px; /* Tamanho da fonte dos exercícios */
+      line-height: 1.4;
+      color: #e5e5ea; /* Cor do texto do exercício */
+      font-weight: 400; /* Montserrat regular */
     }
 
     /* Estilos para os checkboxes */
     input[type="checkbox"] {
-      margin-right: 12px;
-      transform: scale(1.5); /* Aumenta o tamanho do checkbox */
-      accent-color: #ffdd00; /* Cor do checkbox marcado */
-      position: relative; /* Garante que os checkboxes fiquem acima do pseudo-elemento */
-      z-index: 1; /* Garante que os checkboxes fiquem acima do pseudo-elemento */
+      margin-right: 10px; /* Espaço entre checkbox e texto */
+      transform: scale(1.2); /* Tamanho do checkbox */
+      accent-color: #0a84ff; /* Cor de destaque (azul similar à referência) */
     }
 
     /* Estilos para a div que indica o grupo muscular */
     .grupo {
-      margin-top: 20px;
-      margin-bottom: 12px;
-      font-weight: bold;
-      color: #ffcc00; /* Cor amarela */
-      font-size: 26px;
-      position: relative; /* Garante que o grupo fique acima do pseudo-elemento */
-      z-index: 1; /* Garante que o grupo fique acima do pseudo-elemento */
+      font-family: 'Montserrat', sans-serif; /* Usando Montserrat para o grupo muscular */
+      margin-top: 25px; /* Espaço antes do grupo muscular */
+      margin-bottom: 10px; /* Espaço depois do grupo muscular */
+      font-weight: 700; /* Montserrat bold */
+      color: #ffdd00; /* Cor amarela para os grupos musculares */
+      font-size: 20px; /* Tamanho da fonte do grupo */
     }
 
     /* Media query para telas menores que 600px */
     @media (max-width: 600px) {
-      h1, h2 {
-        font-size: 24px;
+      h1 {
+        font-size: 28px;
       }
-      label {
+      h2 {
         font-size: 22px;
       }
-      .grupo {
-        font-size: 24px;
+      label {
+        font-size: 16px;
       }
-      /* Ajusta o tamanho do texto de fundo em telas menores */
-      .treino::before {
-        font-size: 100px;
+      .grupo {
+        font-size: 18px;
+      }
+      .treino {
+        padding: 15px; /* Ajusta padding em telas menores */
       }
     }
   </style>
 </head>
 <body>
 
-  <h1>🏋️‍♂️ INSIDE - Ficha de Treino</h1>
+  <h1>🏋️‍♂️ TREINO ALUNO 🥊</h1>
 
   <div class="treino">
     <h2>✅ Treino A - Segunda</h2>
