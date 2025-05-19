@@ -9,7 +9,7 @@
   "icons": [
     {
       "src": "/icone inside.png"
-      "sizes": "any", // Use "any"
+      "sizes": "any"
       "type": "image/png"
     }
   ]
