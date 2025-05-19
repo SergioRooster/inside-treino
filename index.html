@@ -3,23 +3,30 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Ficha de Treino</title>
+  <title>INSIDE - Treino Físico</title>
+  <link rel="manifest" href="manifest.json">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
   <style>
     body {
-      font-family: Ubuntu, sans-serif;
-      background-color: #000000;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
       color: #f1f1f1;
       padding: 30px;
     }
     h1, h2 {
       color: #ffdd00;
+      text-transform: uppercase;
     }
     .treino {
       margin-bottom: 40px;
       padding: 20px;
-      background-color: #171717;
+      background-color: #1e1e1e;
       border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 10px rgba(255, 221, 0, 0.2);
     }
     label {
       display: block;
@@ -29,69 +36,83 @@
     input[type="checkbox"] {
       margin-right: 10px;
       transform: scale(1.2);
-      accent-color: #00ff73;
+      accent-color: #ffdd00;
     }
     .grupo {
       margin-top: 15px;
       margin-bottom: 10px;
       font-weight: bold;
-      color: #ffdd00;
+      color: #ffcc00;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 18px;
+      }
+      .treino {
+        padding: 15px;
+      }
+      label {
+        font-size: 18px;
+        margin: 12px 0;
+      }
+      .grupo {
+        font-size: 20px;
+        margin-top: 20px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>🏋️‍♂️ Ficha de Treino</h1>
+  <h1>🏋️‍♂️ INSIDE - Ficha de Treino</h1>
 
   <div class="treino">
-    <h2>✅ Treino A - Segunda (Peito, Ombro, Tríceps)</h2>
-
+    <h2>✅ Treino A - Segunda</h2>
     <div class="grupo">Peito</div>
-    <label><input type="checkbox"> Supino Reto Barra – 2x12, 2x10, 1x8</label>
-    <label><input type="checkbox"> Supino Reto Halter – 4x12</label>
-    <label><input type="checkbox"> Crucifixo – 3x15</label>
+    <label><input type="checkbox"> SUPINO RETO BARRA – 2x12, 2x10, 1x8</label>
+    <label><input type="checkbox"> SUPINO RETO HALTER – 4x12</label>
+    <label><input type="checkbox"> CRUCIFIXO – 3x15</label>
 
     <div class="grupo">Ombro</div>
-    <label><input type="checkbox"> Desenvolvimento Barra (em pé) – 4x10</label>
-    <label><input type="checkbox"> Elevação Lateral – 5x12</label>
-    <label><input type="checkbox"> Crucifixo Inverso – 4x12</label>
+    <label><input type="checkbox"> DESENVOLVIMENTO BARRA (EM PÉ) – 4x10</label>
+    <label><input type="checkbox"> ELEVAÇÃO LATERAL – 5x12</label>
+    <label><input type="checkbox"> CRUCIFIXO INVERSO – 4x12</label>
 
     <div class="grupo">Tríceps</div>
-    <label><input type="checkbox"> Tríceps Testa – 4x10</label>
-    <label><input type="checkbox"> Tríceps Corda – 4x12</label>
-    <label><input type="checkbox"> Tríceps Coice – 3x12</label>
+    <label><input type="checkbox"> TRÍCEPS TESTA – 4x10</label>
+    <label><input type="checkbox"> TRÍCEPS CORDA – 4x12</label>
+    <label><input type="checkbox"> TRÍCEPS COICE – 3x12</label>
   </div>
 
   <div class="treino">
-    <h2>✅ Treino B - Quarta (Costas, Bíceps, Abdômen)</h2>
-
+    <h2>✅ Treino B - Quarta</h2>
     <div class="grupo">Costas</div>
-    <label><input type="checkbox"> Barra Fixa – 3x10</label>
-    <label><input type="checkbox"> Remada Curvada – 4x10</label>
-    <label><input type="checkbox"> Remada Meadows – 3x10</label>
-    <label><input type="checkbox"> Serrote – 4x8</label>
-    <label><input type="checkbox"> Puxada Baixa – 3x15</label>
+    <label><input type="checkbox"> BARRA FIXA – 3x10</label>
+    <label><input type="checkbox"> REMADA CURVADA – 4x10</label>
+    <label><input type="checkbox"> REMADA MEADOWS – 3x10</label>
+    <label><input type="checkbox"> SERROTE – 4x8</label>
+    <label><input type="checkbox"> PUXADA BAIXA – 3x15</label>
 
     <div class="grupo">Bíceps</div>
-    <label><input type="checkbox"> Rosca Martelo – 4x12</label>
-    <label><input type="checkbox"> Rosca Invertida – 4x12</label>
-    <label><input type="checkbox"> Rosca Concentrada – 3x10</label>
+    <label><input type="checkbox"> ROSCA MARTELO – 4x12</label>
+    <label><input type="checkbox"> ROSCA INVERTIDA – 4x12</label>
+    <label><input type="checkbox"> ROSCA CONCENTRADA – 3x10</label>
 
     <div class="grupo">Abdômen</div>
-    <label><input type="checkbox"> Abdominal Suspenso – 3x20</label>
+    <label><input type="checkbox"> ABDOMINAL SUSPENSO – 3x20</label>
   </div>
 
   <div class="treino">
-    <h2>✅ Treino C - Sexta (Perna)</h2>
-
+    <h2>✅ Treino C - Sexta</h2>
     <div class="grupo">Quadríceps e Glúteo</div>
-    <label><input type="checkbox"> Extensora – 3x10</label>
-    <label><input type="checkbox"> Agachamento Livre – 4x10</label>
+    <label><input type="checkbox"> EXTENSORA – 3x10</label>
+    <label><input type="checkbox"> AGACHAMENTO LIVRE – 4x10</label>
 
     <div class="grupo">Posterior e Glúteo</div>
-    <label><input type="checkbox"> Terra Sumo – 15, 12, 2x10, 8</label>
-    <label><input type="checkbox"> Stiff – 4x10~12</label>
+    <label><input type="checkbox"> TERRA SUMO – 15, 12, 2x10, 8</label>
+    <label><input type="checkbox"> STIFF – 4x10~12</label>
   </div>
 
 </body>
 </html>
+
