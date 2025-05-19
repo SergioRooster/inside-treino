@@ -2,63 +2,105 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>INSIDE - Treino Físico</title>
   <link rel="manifest" href="manifest.json">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
   <script>
+    // Verifica se o Service Worker é suportado pelo navegador
     if ('serviceWorker' in navigator) {
+      // Registra o Service Worker
       navigator.serviceWorker.register('service-worker.js');
     }
   </script>
   <style>
+    /* Estilos gerais para o corpo da página */
     body {
-      font-family: Arial, sans-serif;
-      background-color: #121212;
-      color: #f1f1f1;
+      font-family: Arial, sans-serif; /* Mantido Arial para o texto principal */
+      background-color: #121212; /* Fundo escuro */
+      color: #f1f1f1; /* Texto claro */
       padding: 20px;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: center; /* Centraliza o conteúdo horizontalmente */
+      margin: 0; /* Remove margem padrão do body */
     }
 
+    /* Estilos para os títulos h1 e h2 */
     h1, h2 {
-      color: #ffdd00;
-      text-transform: uppercase;
-      text-align: center;
+      color: #ffdd00; /* Cor amarela vibrante */
+      text-transform: uppercase; /* Texto em maiúsculas */
+      text-align: center; /* Centraliza o texto */
       font-size: 28px;
+      margin-bottom: 20px; /* Espaço abaixo dos títulos */
     }
 
+    /* Estilos para a div que contém cada treino - Aplicando Glassmorphism */
     .treino {
       width: 100%;
-      max-width: 500px;
+      max-width: 500px; /* Largura máxima para melhor visualização em telas maiores */
       margin-bottom: 40px;
       padding: 20px;
-      background-color: #1e1e1e;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(255, 221, 0, 0.2);
+      /* Glassmorphism styles */
+      background-color: rgba(30, 30, 30, 0.5); /* Fundo semi-transparente escuro */
+      backdrop-filter: blur(10px); /* Efeito de desfoque */
+      -webkit-backdrop-filter: blur(10px); /* Para Safari */
+      border: 1px solid rgba(255, 255, 255, 0.1); /* Borda clara sutil */
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Sombra para profundidade */
+      border-radius: 12px; /* Cantos arredondados */
+      position: relative; /* Necessário para posicionar o pseudo-elemento */
+      overflow: hidden; /* Garante que o pseudo-elemento não vaze */
     }
 
+    /* Pseudo-elemento para o texto de fundo "INSIDE" */
+    .treino::before {
+      content: "INSIDE";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Centraliza o texto */
+      font-family: 'Oswald', sans-serif; /* Usa a fonte condensada */
+      font-size: 150px; /* Tamanho grande para o texto de fundo */
+      font-weight: bold; /* Texto em negrito */
+      color: rgba(255, 255, 255, 0.05); /* Cor branca muito sutil com transparência */
+      z-index: -1; /* Coloca o texto atrás do conteúdo */
+      pointer-events: none; /* Permite cliques nos elementos acima */
+      white-space: nowrap; /* Impede quebra de linha do texto */
+      user-select: none; /* Impede seleção do texto */
+    }
+
+    /* Estilos para os rótulos (cada exercício) */
     label {
-      display: block;
+      display: block; /* Cada label em uma nova linha */
       margin: 16px 0;
-      cursor: pointer;
+      cursor: pointer; /* Muda o cursor ao passar por cima */
       font-size: 24px;
-      line-height: 1.4;
+      line-height: 1.4; /* Espaçamento entre linhas */
+      position: relative; /* Garante que os labels fiquem acima do pseudo-elemento */
+      z-index: 1; /* Garante que os labels fiquem acima do pseudo-elemento */
     }
 
+    /* Estilos para os checkboxes */
     input[type="checkbox"] {
       margin-right: 12px;
-      transform: scale(1.5);
-      accent-color: #ffdd00;
+      transform: scale(1.5); /* Aumenta o tamanho do checkbox */
+      accent-color: #ffdd00; /* Cor do checkbox marcado */
+      position: relative; /* Garante que os checkboxes fiquem acima do pseudo-elemento */
+      z-index: 1; /* Garante que os checkboxes fiquem acima do pseudo-elemento */
     }
 
+    /* Estilos para a div que indica o grupo muscular */
     .grupo {
       margin-top: 20px;
       margin-bottom: 12px;
       font-weight: bold;
-      color: #ffcc00;
+      color: #ffcc00; /* Cor amarela */
       font-size: 26px;
+      position: relative; /* Garante que o grupo fique acima do pseudo-elemento */
+      z-index: 1; /* Garante que o grupo fique acima do pseudo-elemento */
     }
 
+    /* Media query para telas menores que 600px */
     @media (max-width: 600px) {
       h1, h2 {
         font-size: 24px;
@@ -68,6 +110,10 @@
       }
       .grupo {
         font-size: 24px;
+      }
+      /* Ajusta o tamanho do texto de fundo em telas menores */
+      .treino::before {
+        font-size: 100px;
       }
     }
   </style>
