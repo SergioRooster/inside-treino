@@ -2,18 +2,15 @@
   "name": "TREINO ALUNO",
   "short_name": "TREINO",
   "description": "Sua ficha de treino digital",
-  "start_url": "/index.html", // Ou o nome do seu arquivo HTML principal
-  "display": "standalone", // Para que pareça um app nativo
-  "background_color": "#1c1c1e", // Cor de fundo da tela de splash
-  "theme_color": "#2c2c2e", // Cor da barra de status
+  "start_url": "/index.html"
+  "display": "standalone"
+  "background_color": "#1c1c1e"
+  "theme_color": "#2c2c2e"
   "icons": [
     {
-      "src": "/icone inside.png", // Caminho para o seu ícone na raiz do projeto
-      "sizes": "any", // Use "any" se tiver apenas um tamanho na raiz
+      "src": "/icone inside.png"
+      "sizes": "any", // Use "any"
       "type": "image/png"
     }
-    // Para melhor compatibilidade, é ALTAMENTE recomendado criar ícones em múltiplos tamanhos
-    // (ex: 192x192, 512x512) e colocá-los em uma pasta (ex: /icons/).
-    // Se você fizer isso, liste-os aqui com seus respectivos caminhos e tamanhos.
   ]
 }
