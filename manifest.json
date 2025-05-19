@@ -1,50 +1,19 @@
 {
-  "name": "INSIDE - Treino F\u00edsico",
-  "short_name": "INSIDE",
-  "start_url": "./index.html",
-  "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#ffdd00",
+  "name": "TREINO ALUNO",
+  "short_name": "TREINO",
+  "description": "Sua ficha de treino digital",
+  "start_url": "/index.html", // Ou o nome do seu arquivo HTML principal
+  "display": "standalone", // Para que pareça um app nativo
+  "background_color": "#1c1c1e", // Cor de fundo da tela de splash
+  "theme_color": "#2c2c2e", // Cor da barra de status
   "icons": [
     {
-      "src": "icon-72x72.png",
-      "sizes": "72x72",
-      "type": "image/png"
-    },
-    {
-      "src": "icon-96x96.png",
-      "sizes": "96x96",
-      "type": "image/png"
-    },
-    {
-      "src": "icon-128x128.png",
-      "sizes": "128x128",
-      "type": "image/png"
-    },
-    {
-      "src": "icon-144x144.png",
-      "sizes": "144x144",
-      "type": "image/png"
-    },
-    {
-      "src": "icon-152x152.png",
-      "sizes": "152x152",
-      "type": "image/png"
-    },
-    {
-      "src": "icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "icon-384x384.png",
-      "sizes": "384x384",
-      "type": "image/png"
-    },
-    {
-      "src": "icon-512x512.png",
-      "sizes": "512x512",
+      "src": "/icone inside.png", // Caminho para o seu ícone na raiz do projeto
+      "sizes": "any", // Use "any" se tiver apenas um tamanho na raiz
       "type": "image/png"
     }
+    // Para melhor compatibilidade, é ALTAMENTE recomendado criar ícones em múltiplos tamanhos
+    // (ex: 192x192, 512x512) e colocá-los em uma pasta (ex: /icons/).
+    // Se você fizer isso, liste-os aqui com seus respectivos caminhos e tamanhos.
   ]
 }
